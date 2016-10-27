@@ -1,0 +1,427 @@
+	* {
+		margin: 0;
+		padding: 0;
+		border: 0;
+	}
+	
+	#container {
+		text-align: center;
+		margin: 0 auto;
+		background-image: url(../images/bg_03.png);
+	}
+	
+	#zhuanpan {
+		display: block;
+		width: 100%;
+		height: 1050px;
+		margin: 0 auto;
+		overflow: auto;
+	}
+	
+	.prize {
+		width: 100%;
+		height: 170px;
+		margin: 30px auto;
+		display: block;
+	}
+	
+	#container>hr {
+		border: 0;
+		height: 2px;
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+	}
+	
+	.message>hr {
+		height: 1px;
+	}
+	
+	#otherprize {
+		overflow: hidden;
+		height: auto;
+		width: 100%;
+	}
+	
+	#otherprize>h2 {
+		color: white;
+		text-align: center;
+		margin-top: 48px;
+		font-size: 36px;
+		margin-bottom: 36px;
+	}
+	
+	#otherprize_prize {
+		height: 560px;
+		width: 100%;
+		margin: 0 auto;
+		position: relative;
+		display: block;
+	}
+	
+	.huabian {
+		float: left;
+		position: relative;
+		z-index: 999;
+		height: 25px;
+		background-image: url(../images/huabian.png);
+		display: block;
+		margin: 0px auto -20px auto;
+	}
+	/*width:262px:height:275px;*/
+	
+	.otherprize_prize_li {
+		margin: 5%;
+		width: 40%;
+		height: 226px;
+		display: block;
+		float: left;
+	}
+	
+	.pic {
+		height: 160px;
+		width: 100%;
+		border-left: 5px solid #e6a91c;
+		border-right: 5px solid #e6a91c;
+		display: block;
+		background-color: white;
+	}
+	
+	.pic_title {
+		height: 40px;
+		width: 100%;
+		background: #eebe1e;
+		margin-top: 20px;
+		margin-left: 6px;
+		display: block;
+		line-height: 40px;
+		font-weight: 700;
+	}
+	
+	#liuyanban {
+		background-size: 100%;
+		background-repeat: no-repeat;
+		padding-top: 28vw;
+		width: 100%;
+		height: 54vw;
+		background-image: url(../images/liuyanban.png);
+		margin: 0 auto;
+		margin-bottom: 0px;
+		overflow: hidden;
+	}
+	
+	.message {
+		width: 90%;
+		height: 40vw;
+		display: block;
+		margin: 0 auto;
+		overflow: hidden;
+	}
+	
+	dt {
+		display: inline-block;
+		float: left;
+		font-weight: bold;
+		width: 15%;
+		border-bottom: 1px solid #000;
+		height: 20px;
+		margin: 5px 0px;
+		text-align: right;
+		overflow: hidden;
+	}
+	
+	dd {
+		text-align: left;
+		display: inline-block;
+		float: left;
+		width: 80%;
+		border-bottom: 1px solid #000;
+		height: 20px;
+		margin: 5px 0px;
+		padding-left: 5%
+	}
+	
+	#zhuanpan_left,
+	#zhuanpan_left {
+		width: 100%;
+		height: 35%;
+		display: block;
+		float: left;
+	}
+	
+	#zhuanpan_right>h2 {
+		text-align: left;
+		line-height: 80px;
+	}
+	
+	#zhongjiangmingdan {
+		height: 158px;
+		background-color: #fff;
+		margin: auto;
+		margin-top: 20px;
+		border: 1px solid #6f6f6f;
+		float: none;
+	}
+	
+	#zhongjiangmingdan_left {
+		width: 10%;
+		height: 138px;
+		background-color: #b10d0c;
+		color: white;
+		font-size: 16px;
+		text-align: center;
+		line-height: 30px;
+		padding-top: 20px;
+		float: left;
+	}
+	
+	#zhongjiangmingdan_right {
+		height: 80%;
+		float: left;
+		overflow: hidden;
+		padding-top: 5%;
+	}
+	
+	#zhongjiangmingdan_right>li {
+		list-style: none;
+		height: auto;
+		line-height: auto;
+		margin-top: 10px;
+	}
+	
+	.message li {
+		list-style: none;
+		height: 10%;
+		line-height: 20px;
+	}
+	
+	#tianxie {
+		z-index: 999;
+		height: 220px;
+		position: fixed;
+		margin: auto auto;
+		background-color: #fff;
+		top: 30%;
+		margin-left: 14%;
+		overflow: hidden;
+		visibility: hidden;
+	}
+	
+	#tianxie>form>li>input {
+		border: 1px solid #c0c0c0;
+		height: 19px;
+		margin-top: 8px;
+		float: left
+	}
+	
+	#_name {}
+	
+	#tianxie>form {
+		display: inline;
+		height: 210px;
+		display: block;
+		margin: 4px;
+		border: 1px;
+		border-radius: 5px;
+		border: 1px solid #c1c1c1;
+	}
+	
+	span.mingzi {
+		float: left;
+		margin-left: 50px;
+		line-height: 36px;
+	}
+	
+	#bt {
+		width: 40px;
+		height: 22px;
+	
+		line-height: 0px;
+		margin-left: 36%
+	}
+	
+	p#tishiyu {
+		position: relative;
+		color: red;
+	}
+	
+	p#name_p,
+	p#tel_p,
+	p#email_p {
+		display: inline-block;
+		line-height: 36px;
+		float: left;
+		padding-left: 10px;
+		color: red;
+	}
+	
+	#id1 {
+		z-index: 999;
+		height: 220px;
+		position: fixed;
+		margin: auto auto;
+		background-image: url(../images/liuyan.png);
+		top: 300px;
+		margin-left: 10%;
+		overflow: hidden;
+		visibility: hidden;
+	}
+	
+	#postmessage {
+		height: 50px;
+		margin-top: 2px;
+	}
+	
+	#bt2 {
+		clear: both;
+		width: 40px;
+		height: 22px;
+		margin-top: 4px;
+		margin-left: 100px;
+	}
+	
+	#id1>h1 {
+		margin-top: 20px;
+		color: #ff0;
+	}
+	
+	span#zhuanpan_right {
+		width: 94%;
+		height: 450px;
+		border: 0px solid black;
+		float: left;
+		margin-left: 3%;
+	}
+	
+	div#gonggao {
+		width: 90%;
+		/*border: 1px solid;*/
+		margin: auto;
+	}
+	
+	.main_wrap {
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	/*陈永柱子改的*/
+	
+	.header1,
+	.main,
+	.footer,
+	#footer,
+	.container,
+	.top,
+	#container {
+		width: 100%;
+		margin-right: auto;
+		margin-left: auto;
+	}
+	
+	img {
+		width: 100%;
+	}
+	
+	.otherprize_prize_li .pic img {
+		height: 100%;
+	}
+	
+	#footer {
+		display: none;
+	}
+	
+	#start {
+		height: 60%;
+		left: 36%;
+		position: absolute;
+		top: 42px;
+		width: 30%;
+	}
+	
+	#disk {
+		background: url("../images/disk.gif") no-repeat;
+		height: 80%;
+		width: 80%;
+		background-size: 100%;
+		margin: auto;
+		border: none;
+		border-radius: 0;
+	}
+	
+	.demo {
+		width: 100%;
+	}
+	
+	img[src='http://eiv.baidu.com/hmt/icon/21.gif'] {
+		display: none;
+	}
+	
+	@media screen and (max-width: 375px) {
+		#tianxie {
+			z-index: 999;
+			height: 220px;
+			position: fixed;
+			margin: auto auto;
+			background-color: #fff;
+			top: 30%;
+			margin-left: 9%;
+			overflow: hidden;
+			visibility: hidden;
+		}
+	}
+	
+	@media screen and (max-width: 320px) {
+		#zhongjiangmingdan_right li {
+			width: 100%
+		}
+		#zhongjiangmingdan_right {
+			width: 80%;
+			height: 100%;
+			float: left;
+			overflow: hidden;
+		}
+		#zhongjiangmingdan {
+			overflow: hidden;
+		}
+		#zhongjiangmingdan {
+			width: 100%;
+		}
+		dd {
+			text-align: left;
+			display: inline-block;
+			float: left;
+			width: 80%;
+			border-bottom: 1px solid #000;
+			height: px;
+			margin: 5px 0px;
+			padding-left: 5%;
+			overflow: hidden;
+		}
+		#tianxie {
+			z-index: 999;
+			height: 220px;
+			position: fixed;
+			margin: auto auto;
+			background-color: #fff;
+			top: 30%;
+			margin-left: 2%;
+			overflow: hidden;
+			visibility: hidden;
+		}
+	}
+	/*2016.2.16App图片位置*/
+	
+	.main_wrap .cc .header1 #container {
+		margin-top: 20px;
+	}
+	
+	#demo1 {
+		height: 150px;
+		position: relative;
+		top: -150px;
+		text-align: center;
+	}
+	
+	#demo3 {
+		height: 300px;
+		position: relative;
+		top: -300px;
+	}

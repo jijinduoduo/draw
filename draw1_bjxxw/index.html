@@ -1,0 +1,564 @@
+<!doctype html>
+
+<html>
+
+	<head>
+
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>北京信息网，天天领奖品。</title>
+		<meta charset="utf-8">
+
+		<link rel="stylesheet" href="http://www.bjxxw.com/themes/site/default/css/build/style.css?v=20130702" />
+
+		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="stylesheet" type="text/css" media="screen and  (max-width: 500px)" href="./css/style500.css" />
+		<script type="text/javascript" src="./js/jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="./js/jQueryRotate.2.2.js"></script>
+		<script type="text/javascript" src="./js/scrollQ.js"></script>
+		<script type="text/javascript">
+			//if("{$loginUser->username}"=="游客"){
+			//alert('请先登录');
+			//window.location.href="http://www.bjxxw.com/index.php?m=u&c=login";
+			//}
+			//else{
+			$(function() {
+				plist();
+				message();
+				postinfo();
+			});
+
+			function lottery() {
+				$.ajax({
+					type: 'POST',
+					url: './php/index.php',
+					dataType: 'json',
+					cache: false,
+					data: {
+						username: '用户',
+						uid: '12333',
+						surename: $('#_name').val(),
+						utel: $('#_tel').val(),
+						uemail: $("#_email").val()
+					},
+					error: function() {
+						alert('出错了！');
+						return false;
+					},
+
+					success: function(json) {
+						$("#startbtn").unbind('click').css("cursor", "default");
+						var a = json.angle; //角度 
+						var p = json.prize; //奖项 
+						var pid = json.id;
+						var getTime = json.getTime;
+						//         alert(getTime)
+
+						//alert(pid+'等奖');
+						//alert(a);
+						//alert(p+'OOO');
+						$("#getTime").val(getTime);
+
+						switch(pid) {
+							case 0:
+								$("#id1").css("display", "none");
+								$("#pid0").val(p);
+								break;
+							default:
+								$("#id1").css("visibility", "hidden");
+								$("#id1").children("h1").html(p);
+								break;
+						}
+
+						//      alert(pid);
+						$("#startbtn").rotate({
+							duration: 3000, //转动时间 
+							angle: 0,
+							animateTo: 1800 + a, //转动角度 
+							easing: $.easing.easeOutSine,
+							callback: function() {
+								var con = (p + '\n是否继续？');
+								//                 $('#id1').html(con);
+								$('#id1').css("visibility", "visible");
+								if($('#id1').css('display') == "none") {
+									alert($("#pid0").val());
+								}
+								//                 	   再次绑定click事件
+								$("#startbtn").css("cursor", "pointer").live("click", function() {
+									lottery();
+									//                 if(con){ 
+									//                     lottery(); 
+									//                 }else{ 
+									//              	   再次绑定click事件
+									//              	   $("#startbtn").css("cursor","pointer").live("click",function(){                		   
+									//              	      lottery(); 
+								});
+								//
+								//                     return false; 
+								//
+								//                 } 
+
+							}
+
+						});
+
+					}
+
+				});
+
+			}
+
+			//ajax获取已经获奖的名单
+
+			function plist() {
+
+				$.ajax({
+					type: 'POST',
+					url: './php/plist.php',
+					dataType: 'json',
+					cache: false,
+					error: function() {
+						alert('获奖的名单出错了！');
+						return false;
+					},
+					success: function(json) {
+						//获奖名单	
+						$.each(json, function(n, value) {
+
+							$("#demo1").append('<li>' + value[0] + '&nbsp;(' + value[1] + ')&nbsp;' + value[3] + '</li>');
+							//交给前台显示
+						});
+					}
+				});
+			}
+
+			//以前版本的抽奖滚动
+			//$(document).ready(function(){  
+			//	     var de = {  
+			//          line:4,  
+			//          scrollNum:1,  
+			//          scrollTime:1000
+			//      }
+			//  $("#zhongjiangmingdan_right").scrollQ(de);  
+			//  $(".message").scrollQ();  
+			//}); 
+
+			//ajax留言
+
+			function pmessage() {
+
+				$.ajax({
+
+					type: 'POST',
+					url: './php/postmessage.php',
+					dataType: 'json',
+					cache: false,
+
+					data: {
+						uid: '{$loginUser->uid}',
+						ptime: $("#getTime").val(),
+						postmessage: $("#postmessage").val()
+					},
+					error: function() {
+						alert('留言出错了！');
+						return false;
+					},
+					success: function(json) {
+						if(json == 1) {
+							// 	留言成功
+							//alert("成功1")
+						} else {
+							// 	留言失败
+							//alert("留言失败1")
+						}
+
+					}
+				});
+			}
+
+			//////////////////////////////////
+
+			//ajax获取留言的名单
+
+			function message() {
+
+				$.ajax({
+
+					type: 'POST',
+
+					url: './php/message.php',
+
+					dataType: 'json',
+
+					cache: false,
+
+					error: function() {
+
+						alert('获奖的名单出错了！');
+
+						return false;
+
+					},
+
+					success: function(json) {
+
+						//获奖留言	
+
+						$.each(json, function(n, value) {
+
+							//		   alert(value[0]+value[1]);
+
+							$("#demo3").append('<li><dt>' + value[0] + '</dt><dd>' + value[1] + '</dd></li>');
+
+							//交给前台显示
+
+						});
+
+					}
+
+				});
+
+			}
+
+			//ajax获取用户信息
+
+			function postinfo() {
+
+				$.ajax({
+
+					type: 'POST',
+
+					url: './php/postinfo.php',
+
+					dataType: 'json',
+
+					cache: false,
+
+					data: {
+						uid: '{$loginUser->uid}'
+					},
+
+					error: function() {
+
+						alert('提交出错了！');
+
+						return false;
+
+					},
+
+					success: function(json) {
+
+						if(json == 1) {
+							//填过来
+
+							$("#startbtn").click(function() {
+
+								lottery();
+
+							});
+
+						} else if(json == 0) {
+							//没填过
+							$("#startbtn").click(function() {
+
+								if($("#_name").val() == "" || $("#_tel").val() == "" || $("#_email").val() == "") {
+
+									$("#tianxie").css("visibility", "visible");
+
+								} else {
+
+									lottery();
+								}
+
+							});
+
+						}
+
+						//交给前台显示
+
+					}
+
+				});
+
+			}
+
+			$(function() {
+				$("#bt").click(function() {
+
+					if($("#_name").val().match(/^[\u4e00-\u9fa5]{2,4}$/i) && $("#_tel").val().match(/^[1][0-9][0-9]{9}$/) && $("#_email").val().match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/)) {
+
+						$("#tianxie").css("visibility", "hidden");
+						return true;
+
+					} else {
+						$("#tishiyu").html("请正确完善信息否则中奖无效！！")
+						return false;
+					}
+
+				});
+			})
+		</script>
+
+	</head>
+
+	<body>
+
+		<div class="wrap">
+
+			<div class="main_wrap">
+
+				<div class="cc">
+
+					<!--判断用户登录 网页设计区域开始 -->
+
+					<input type="hidden" id="getTime" />
+
+					<div class="header1">
+
+					</div>
+
+					<!-- 判断用户登录网页设计区域结束 -->
+
+					<!-- 网页设计区域开始 -->
+
+					<!--你好&nbsp;{$loginUser->username}-->
+
+					<!-------------------->
+
+					<div id="container">
+						<img src="./images/head.png" />
+
+						<span id="zhuanpan">
+				<span id="zhuanpan_left">
+					
+								
+					      <!--转盘开始-->   
+
+	<div class="demo">
+
+        <div id="disk"></div>
+
+        <div id="start">
+        	<img id="startbtn" src="./images/start.png" style="cursor: pointer; transform: rotate(0deg);"></div>
+
+   </div>
+<!--转盘结束-->
+					
+					
+					
+				</span>
+						<span id="zhuanpan_right">
+					<h2>活动公告:</h2>
+					
+                    <div id="gonggao">
+                    	<p>一、参与方式</p>
+                        <p class="gonggao_p">注册用户每天页面签到即可参与每天一次的天天有奖品抽奖活动，需要注意的是，务必完善个人信息否则中奖无效。(因奖品涉及到实物，请正确填写姓名、联系电话、电子邮箱等信息)</p> 
+                        <p>二、活动时间</p>
+                        <p class="gonggao_p">从即日起每天均可参加一次活动。</p>
+                        <p>三、 奖项设置</p>
+                        <p class="gonggao_p">一等奖：苹果平板iPad Pro WLAN+Cellular版 128GB
+二等奖：iPhone 6s Plus 玫瑰金色 128GB三等奖：洋河蓝色经典天之蓝 52度 480ml四等奖：黄山头天下精华 46度 500ml五等奖：大米一袋 5kg六等奖：象棋一盒七等奖：分类积分 10积分</p>
+						<p>四、注意事项</p>
+                        <p class="gonggao_p">1.每人只能用一个账号参加活动，以首次收到的有效信息为准，请认真填写并确认信息完整有效。</p>
+                        <p class="gonggao_p">2.参与下载北京信息网APP将提高获奖率哦！</p>
+                        <p class="gonggao_p">3.活动实物奖励将以电话或邮箱方式提醒，注意查收!</p>
+                        <p class="gonggao_p">4.所有奖品由北京信息网提供，本次抽奖活动最终解释权归北京信息网所有。</p>
+					</div>
+					<div id="zhongjiangmingdan">
+						<div id="zhongjiangmingdan_left">中 奖 名 单</div>
+						<div id="zhongjiangmingdan_right" style="overflow: hidden;">
+					
+					<marquee scrollamount="2" direction="up" behaviour="Scroll" onmouseout="this.start();" onmouseover="this.stop();">
+						<div id='demo1'>
+							
+						</div>
+					</marquee>
+					
+					<div id='demo2'></div>
+						</div>
+						
+					</div>
+				</span>
+						</span>
+						<div class="prize">
+							<img src="./images/yidengjiang.png" />
+						</div>
+						<hr />
+						<div class="prize">
+							<img src="./images/erdengjiang.png" />
+						</div>
+						<hr />
+						<div class="prize">
+							<img src="./images/sandengjiang.png" />
+						</div>
+						<hr />
+						<div id="otherprize">
+							<h2>其他精品专区</h2>
+
+							<span id="otherprize_prize">
+					<span class="huabian"></span>
+							<span class="otherprize_prize_li">
+						<span class="pic">
+							<img src="./images/jiangpin1.png" />
+						</span>
+							<span class="pic_title">黄山头天下精华 46度 500ml</span>
+							</span>
+							<span class="otherprize_prize_li">
+						<span class="pic">
+							<img src="./images/jiangpin2.png" />
+						</span>
+							<span class="pic_title">大米 5kg</span>
+							</span>
+							<span class="huabian">
+					
+					</span>
+							<span class="otherprize_prize_li">
+						<span class="pic">
+							<img src="./images/jiangpin3.png" />
+						</span>
+							<span class="pic_title">象棋一盒</span>
+							</span>
+							<span class="otherprize_prize_li">
+						<span class="pic">
+								<img src="./images/jiangpin4.png" />
+						</span>
+							<span class="pic_title">分类积分 10积分</span>
+							</span>
+							</span>
+
+						</div>
+
+						<input type="hidden" id="pid0" />
+						<!--获取pid为0时候的内容-->
+						<div id="liuyanban">
+							<span class="message" id="message">
+		<!--h5滚动-->
+		<marquee scrollamount="2" direction="up" behaviour="Scroll" onmouseout="this.start();" onmouseover="this.stop();"><div id='demo3'></div></marquee>
+			<div id='demo4'></div>	
+				</span>
+
+						</div>
+						<img src="./images/guanggao_03.png" style="margin: 0px aoto;" />
+						<div id="id1">
+							<h1></h1>
+							<p id="dizhi" style="width:60%;margin:0 auto;">领奖地址:北京市朝阳区东三环南路甲52号，顺迈金钻大厦11-B。请于五个工作日内领取，详情咨询17093450736.</p>
+							<form>
+
+								<textarea id="postmessage" maxlength="100"></textarea><br/>
+								<input type="button" value="确定" id="bt2" />
+
+							</form>
+						</div>
+						<div id="tianxie">
+							<form action="#">
+								<p id="tishiyu"> </p>
+								<li style="width: 100%;float: left;margin-top: 10px;"><span class="mingzi">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;:&nbsp;</span><input type="text" id="_name" />
+									<p id="name_p"></p>
+								</li>
+								<li style="width: 100%;float: left;"><span class="mingzi">联系电话&nbsp;:&nbsp;</span><input type="text" id="_tel" />
+									<p id="tel_p"></p>
+								</li>
+								<li style="width: 100%;float: left;"><span class="mingzi">电子邮箱&nbsp;:&nbsp;</span><input type="text" id="_email" />
+									<p id="email_p"></p>
+								</li>
+								<li style="width: 100%;float: left;"><span class="mingzi"></span><input type="button" id="bt" value="确定" /></li>
+							</form>
+
+						</div>
+
+						<script type="text/javascript">
+							$("#bt").click(function() {
+								var m = $("#_name").val().match(/^[\u4e00-\u9fa5]{2,4}$/i);
+								if(!m) {
+									$("#name_p").html('请正确填写姓名')
+								} else {
+									$("#name_p").html('')
+								}
+
+								if(!$("#_tel").val().match(/^[1][0-9][0-9]{9}$/)) {
+									$("#tel_p").html('格式错误')
+								} else {
+									$("#tel_p").html(' ');
+								}
+								if(!$("#_email").val().match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/)) {
+									$("#email_p").html('格式错误')
+								} else {
+									$("#email_p").html(' ');
+								}
+
+							});
+
+							$(function() {
+								$("#bt2").click(function() {
+									pmessage();
+									//  	alert($("#postmessage").val());
+									$("#id1").css("visibility", "hidden");
+								})
+							})
+						</script>
+
+					</div>
+
+					<!-- 网页设计区域结束 -->
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<script>
+		</script>
+
+	</body>
+
+</html>
+
+<script type="text/javascript">
+	//	window.onload = function() //用window的onload事件，窗体加载完毕的时候
+	//		{
+	//			var demo1=document.getElementById('demo1');
+	//			var demo2=document.getElementById('demo2');
+	//			var demo3=document.getElementById('demo3');
+	//			var demo4=document.getElementById('demo4');
+	//			var zhongjiangmingdan_right=document.getElementById('zhongjiangmingdan_right');
+	//			
+	//			//第一个滚动
+	//			var speed = 50;
+	//			demo2.innerHTML = demo1.innerHTML;
+	//             alert(demo2.offsetHeight+"顶顶顶顶顶"+zhongjiangmingdan_right.scrollTop+"顶顶顶顶顶"+demo1.offsetHeight);
+	//			function Marquee() {
+	//				if(demo2.offsetHeight - zhongjiangmingdan_right.scrollTop <= 0)
+	//					zhongjiangmingdan_right.scrollTop -= demo1.offsetHeight
+	//				else {
+	//					zhongjiangmingdan_right.scrollTop++
+	//				}
+	//			}
+	//			var MyMar = setInterval(Marquee, speed)
+	//			zhongjiangmingdan_right.onmouseover = function() {
+	//				clearInterval(MyMar)
+	//			}
+	//			zhongjiangmingdan_right.onmouseout = function() {
+	//				MyMar = setInterval(Marquee, speed)
+	//			}
+	//
+	//			//	第二个滚动
+	//
+	//			demo4.innerHTML = demo3.innerHTML
+	//
+	//			function Marquee1() {
+	//				if(demo4.offsetHeight - demo3.parentNode.scrollTop <= 0)
+	//					demo3.parentNode.scrollTop -= demo3.offsetHeight
+	//				else {
+	//					demo3.parentNode.scrollTop++
+	//				}
+	//			}
+	//			var MyMar1 = setInterval(Marquee1, speed)
+	//			demo3.parentNode.onmouseover = function() {
+	//				clearInterval(MyMar1)
+	//			}
+	//			demo3.parentNode.onmouseout = function() {
+	//				MyMar1 = setInterval(Marquee1, speed)
+	//			}
+	//
+	//		}
+</script>

@@ -1,0 +1,383 @@
+<!doctype html>
+
+<html>
+
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta charset="utf-8">
+		<title>北京信息网，天天领奖品。</title>
+
+		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="stylesheet" type="text/css" media="screen and  (max-width: 500px)" href="./css/style500.css" />
+
+		<script type="text/javascript" src="./js/jquery-1.10.2.js"></script>
+		<script type="text/javascript" src="./js/awardRotate.js"></script>
+		<script type="text/javascript" src="./js/turntable.js"></script>
+		<script src="./js/jquery.tabs.js"></script>
+
+		<script type="text/javascript">
+			function pmessage() {
+				var did = $('#num').val();
+				var leave = $("#postmessage").val();
+				var uname = $("#uname").val();
+				var tel = $('#tel').val();
+				$.ajax({
+					type: 'POST',
+					url: './php/leave.php',
+					dataType: 'json',
+					data: {
+						id: did,
+						leave: leave,
+						uname: uname,
+						tel: tel
+					},
+					error: function() {
+						alert('留言出错了！');
+						return false;
+					},
+
+					success: function(mes) {
+						alert(mes['message']);
+					},
+				});
+			}
+		</script>
+
+	</head>
+
+	<body>
+
+		<div class="wrap">
+
+			<div class="main_wrap">
+
+				<div class="cc">
+
+					<!--判断用户登录 网页设计区域开始 -->
+
+					<!-- 判断用户登录网页设计区域结束 -->
+
+					<!-- 网页设计区域开始 -->
+
+					<div class="body-all">
+						<!--主题图片-->
+						<img class="banner-size" src="./images/banner2.png">
+						<!--主题图片结束-->
+						<!--正文开始-->
+						<div class="content">
+							<!--第一部分转盘-->
+							<div class="num1-title">
+								<img class="num1-img" src="./images/num1-text.png">
+								<!--<img class="num1-img" src="./images/num1.png">
+					<h1 class="num1-text">疯狂大转盘，</h1>
+					<h1 class="num1-text1">抽奖抽不停!</h1>-->
+								<img class="num1-money1" src="./images/money1.png">
+								<!--转盘-->
+								<div class="num1-turntable">
+									<img src="./images/1.png" id="shan-img" style="display:none;" />
+									<img src="./images/2.png" id="sorry-img" style="display:none;" />
+									<div class="banner">
+										<div class="turnplate" style="background-image:url(./images/turnplate-bg.png);background-size:100% 100%;">
+											<canvas class="item" id="wheelcanvas" width="422px" height="422px"></canvas>
+											<img class="pointer" src="./images/turnplate-pointer.png" />
+										</div>
+									</div>
+								</div>
+								<!--转盘结束-->
+								<img class="num1-money2" src="./images/money2.png">
+								<!--活动奖品-->
+								<div class="num1-prize">
+									<img class="num1-prize-title" src="./images/prize.png">
+									<div class="prize-content">
+										<div class="prize-num1">
+											<img class="prize-img" src="./images/jiangpin1.png">
+											<p class="prize-text">一等奖 MacBook Pro</p>
+										</div>
+										<div class="prize-num1">
+											<img class="prize-img" src="./images/jiangpin2.png">
+											<p class="prize-text">二等奖 iPad Pro</p>
+										</div>
+										<div class="prize-num1">
+											<img class="prize-img" src="./images/jiangpin3.png">
+											<p class="prize-text">三等奖 iPhone6s Plus</p>
+										</div>
+										<div class="prize-num1">
+											<img class="prize-img" src="./images/jiangpin4.png">
+											<p class="prize-text">四等奖 黄山头天下精华</p>
+										</div>
+										<div class="prize-num1">
+											<img class="prize-img" src="./images/jiangpin6.png">
+											<p class="prize-text">五等奖 精美T恤一件</p>
+										</div>
+										<div class="prize-num1">
+											<img class="prize-img" src="./images/jiangpin5.png">
+											<p class="prize-text">六等奖 精美水杯一个</p>
+										</div>
+										<div class="prize-num1">
+											<img class="prize-img" src="./images/jiangpin7.png">
+											<p class="prize-text">七等奖 创意小礼品</p>
+										</div>
+										<div class="prize-num1">
+											<img class="prize-img" src="./images/jiangpin8.png">
+											<p class="prize-text">八等奖 精美小台灯</p>
+										</div>
+										<div class="prize-num1">
+											<img class="prize-img" src="./images/jiangpin9.png">
+											<p class="prize-text">九等奖 智能小夜灯</p>
+										</div>
+										<div class="prize-num1">
+											<img class="prize-img" src="./images/jiangpin10.png">
+											<p class="prize-text">十等奖 摩托车闹钟</p>
+										</div>
+										<div class="prize-num1">
+											<img class="prize-img" src="./images/jiangpin11.png">
+											<p class="prize-text">十一等奖 创意家居摆件</p>
+										</div>
+										<div class="prize-num1">
+											<img class="prize-img" src="./images/jiangpin12.png">
+											<p class="prize-text">十二等奖 谢谢参与</p>
+										</div>
+									</div>
+								</div>
+								<!--活动奖品结束-->
+
+							</div>
+
+							<!--第一部分转盘结束-->
+
+							<!--第二部分获奖记录-->
+							<div class="num2-title">
+								<img class="num2-img" src="./images/num2-text.png">
+								<div class="num2-message">
+									<div class="box demo1">
+										<ul class="tab_menu">
+											<li class="current">
+												<a>获奖名单</a>
+											</li>
+											<li>
+												<a>获奖留言</a>
+											</li>
+										</ul>
+										<div class="tab_box">
+											<div class="tab-border">
+												<div class="num2-awards">
+													<p class="num2-awards-title">奖项</p>
+													<p class="num2-awards-title">姓名</p>
+													<p class="num2-awards-title">中奖时间</p>
+												</div>
+												<div class="slide-container">
+													<ul class="slide-list js-slide-list" id="leavemessage">
+
+													</ul>
+													<script type="text/javascript">
+														var doscroll = function() {
+															var $parent = $('.js-slide-list');
+															var $first = $parent.find('li:first');
+															var height = $first.height();
+															$first.animate({
+																marginTop: -height + 'px'
+															}, 500, function() {
+																$first.css('marginTop', 0).appendTo($parent);
+															});
+														};
+														setInterval(function() {
+															doscroll()
+														}, 2000);
+													</script>
+												</div>
+											</div>
+
+											<div class="tab-border tab-border1 hide">
+												<div class="slide-container1">
+													<ul class="slide-list js-slide-list1" id="mess_id">
+
+													</ul>
+													<script type="text/javascript">
+														var doscroll1 = function() {
+															var $parent1 = $('.js-slide-list1');
+															var $first1 = $parent1.find('li:first');
+															var height1 = $first1.height();
+															$first1.animate({
+																marginTop: -height1 + 'px'
+															}, 500, function() {
+																$first1.css('marginTop', 0).appendTo($parent1);
+															});
+														};
+														setInterval(function() {
+															doscroll1()
+														}, 2000);
+													</script>
+												</div>
+											</div>
+										</div>
+										<script type="text/javascript">
+											$(function() {
+												$('.demo1').Tabs();
+											});
+										</script>
+
+									</div>
+								</div>
+								<!--第二部分获奖记录结束-->
+
+								<!--第三部分活动规则-->
+								<div class="num3-rule">
+									<img class="num1-img" src="./images/num3-text.png">
+									<div class="num3-message">
+										<div class="num3-frame">
+											<h3 class="num3-h3">一、参与方式</h3>
+											<p class="num3-p">注册用户每天可通过北京信息网微信公众号，北京信息网www.bjxxw.com以及北京信息网活动APP参与天天有奖品抽奖活动，需要注意的是，务必完善个人信息否则中奖无效。(因奖品涉及到实物，请正确填写姓名、联系电话等信息)</p>
+											<div class="num3-location">
+												<h3>二、奖项设置</h3>
+												<p class="num3-p">一等奖：Apple MacBook Pro 13.3英寸笔记本电脑 银色</p>
+												<p class="num3-p"> 二等奖：Apple iPad Pro平板电脑 9.7 英寸（32G WLAN版MM172CH）</p>
+												<p class="num3-p">三等奖：Apple iPhone 6s Plus 16G 玫瑰金色</p>
+												<p class="num3-p">四等奖：黄山头天下精华 53度 500ml 一瓶</p>
+												<p class="num3-p">五等奖：精美T恤一件</p>
+												<p class="num3-p">六等奖：精美水杯一个</p>
+												<p class="num3-p">七等奖：创意小礼品一个</p>
+												<p class="num3-p">八等奖：精美小台灯一个</p>
+												<p class="num3-p">九等奖：智能小夜灯一个</p>
+												<p class="num3-p">十等奖：摩托车闹钟一个</p>
+												<p class="num3-p">十一等奖：创意家居摆件一个</p>
+												<!--<p class="num3-p">十二等奖：夜光LED灯一个</p>-->
+												<p class="num3-p">十二等奖：谢谢参与</p>
+											</div>
+											<img class="num3-img" src="./images/money3.png">
+											<h3>三、注意事项</h3>
+											<p class="num3-p">1.每人只能用一个账号参加活动，以首次收到的有效信息为准，请认真填写并确认信息完整有效，姓名务必与身份证信息一致。</p>
+											<p class="num3-p">2.参与下载北京信息网APP将提高获奖率哦！</p>
+											<p class="num3-p">3.活动实物奖励将以电话或邮箱方式提醒，注意查收!</p>
+											<p class="num3-p">4.所有奖品由北京信息网提供，本次抽奖活动最终解释权归北京信息网所有。</p>
+											<p class="num3-p1">注意：北京信息网天天有奖品，每人每天限抽奖一次，禁止恶意更换IP进行抽奖，如有此行为，取消领奖资格！</p>
+											<p class="num3-p1">声明：所有抽奖活动以及奖品发放与苹果公司(Apple Inc)无关！</p>
+										</div>
+									</div>
+								</div>
+								<!--第三部分活动规则结束-->
+							</div>
+
+							<!--留言框-->
+							<div class="message" id="liuyan">
+							</div>
+							<script>
+								function tijiao() {
+									var uname = $("#uname").val();
+									var tel = $('#tel').val();
+									//window.location.reload();
+									if(uname == '' || tel == '') {
+										alert("请填写完整领奖信息！");
+									} else if(tel.length > 0 && uname.length > 0) {
+										var reg = /^1[34578]\d{9}$/;
+										var res = reg.test(tel);
+										if(res) {
+											pmessage();
+											$("#liuyan").css("display", "none");
+										} else {
+											alert('请输入正确有效的手机号码!!!');
+										}
+									}
+
+								}
+
+								function tijiao1() {
+									pmessage();
+									$("#liuyan").css("display", "none");
+								}
+							</script>
+							<!--留言框结束-->
+
+							<!--<img class="" src="./images/bottom.png">-->
+							<!--正文结束-->
+						</div>
+
+						<!-- 网页设计区域结束 -->
+						<input type="hidden" id="getTime" />
+
+						<input type="hidden" value="{$loginUser->username}" id='username' />
+						<input type="hidden" value="{$loginUser->uid}" id='uid' />
+						<input type="hidden" value="" id='num' />
+
+					</div>
+
+				</div>
+
+				<script>
+					//显示获奖名单
+					function winners() {
+
+						$.ajax({
+							type: 'POST',
+							url: './php/draw.php',
+							dataType: 'json',
+							error: function() {
+								alert('获取获奖名单出错！');
+								return false;
+							},
+							success: function(json) {
+
+								$.each(json, function(n, value) {
+									//							alert(222222221);
+
+									$("#leavemessage").append('<li><p class="num2-awards-content">' + value["prize"] + '</p><p class="num2-awards-content">' + value["uname"] + '</p><p class="num2-awards-content">' + value["time"] + '</p></li>');
+								});
+								//						
+							}
+						});
+					}
+					//显示留言
+					function get_message() {
+
+						$.ajax({
+							type: 'POST',
+							url: './php/draw.php',
+							dataType: 'json',
+							error: function() {
+								alert('获取获奖名单出错！');
+								return false;
+							},
+							success: function(json) {
+
+								$.each(json, function(n, value) {
+									//							alert(222222221);
+
+									if(value["leave"] == null || value["leave"] == '') {
+
+									} else {
+										$("#mess_id").append('<li><p class="num2-awards-content">' + value["uname"] + '</p><p class="num2-awards-content1">' + value["leave"] + '</p></li>');
+									}
+								});
+
+							}
+						});
+					}
+
+					//判断留言姓名
+					function checkna() {
+						na = form1.uname1.value;
+						if(na == "") {
+							alert("请输入姓名");
+
+						} else {
+							//	  		     			alert("输入正确");
+						}
+					}
+					//判断留言电话
+					function checknub() {
+						num = form1.nub.value;
+						if(num.length != 11) {
+							alert("请输入正确11位电话号码");
+
+						} else {
+
+						}
+
+					}
+
+					winners();
+					get_message();
+				</script>
+
+	</body>
+
+</html>

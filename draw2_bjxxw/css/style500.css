@@ -1,0 +1,235 @@
+.content {
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/bottom3.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-top: -4px;
+}
+.num1-title {
+    width: 100%;
+    margin: auto;
+}
+.num1-turntable {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    margin-top: 3%;
+}
+.banner {
+    display: block;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+.num1-img {
+    position: relative;
+    margin-left: 2%;
+    margin-top: 3%;
+    width: 90%;
+    height: 100%;
+}
+.num1-money1 {
+    display: none;
+}
+.num1-money2 {
+    display: none;
+}
+.prize-content {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+.prize-num1 {
+    background-image: url(../images/prize-content.png);
+    width: 235px;
+    height: 210px;
+    background-size: 235px 210px;
+    margin: auto;
+    float: none;
+    margin-top: 1.5%;
+}
+.num1-prize-title {
+    margin-left: 2%;
+    width: 40%;
+    margin-top: 1%;
+}
+.num2-title {
+    width: 100%;
+    margin: auto;
+}
+.num2-img {
+    width: 90%;
+    margin-left: 8%;
+}
+.num2-message {
+    width: 100%;
+    margin: auto;
+    height: 450px;
+}
+.tab-border {
+    width: 100%;
+    margin: auto;
+}
+.tab_box {
+    background-image: url(../images/message.png);
+    height: 380px;
+    background-size: 100% 100%;
+}
+.num2-awards {
+    margin-top: 40px;
+    position: relative;
+    display: table;
+    width: 90%;
+    margin: auto;
+}
+.num2-awards-title {
+    width: 25%;
+}
+.num2-awards-title:nth-child(3) {
+    width: 50%;
+}
+.num2-awards-content:nth-child(2) {
+    width: 11%;
+    text-align: center;
+}
+.num2-awards-content:nth-child(3) {
+    width: 29%;
+}
+.num2-awards-content1 {
+    width: 37%;
+}
+.num2-awards-content {
+    width: 20%;
+}
+.num3-frame {
+    width: 80%;
+    margin: auto;
+    height: 100%;
+    color: #ffffff;
+}
+.num3-location {
+    width: 100%;
+    float: left;
+    margin-bottom: 22px;
+}
+.num3-message {
+    height: 100%;
+    border-radius: 20px;
+    background-color: #33b0de;
+    margin-top: 20px;
+}
+.num3-rule {
+    margin-bottom: 15%;
+}
+.num3-img {
+    display: none;
+}
+.current {
+    width: 25%;
+    font-size: 1em;
+    margin-left: 20%;
+}
+.tab_menu li {
+    width: 25%;
+    font-size: 1em;
+    margin-left: 23%;
+}
+.message {
+	width: 80%;
+    left: 10%;
+    top: 100px;
+}
+#uname {
+    width: 60%;
+}
+#tel {
+    width: 60%;
+}
+#postmessage {
+    width: 80%;
+    margin-top: -3%;
+}
+.message-aa {
+    margin-top: -3%;
+}
+.tab_menu {
+    width: 100%;
+}
+.message-p1 {
+    margin: auto;
+    float: left;
+    line-height: 23px;
+    text-indent: 1em;
+}
+.slide-container {
+    position: relative;
+    overflow: hidden;
+    height: 270px;
+}
+.tab-border ul {
+    width: 678px;
+    /* border: 1px solid; */
+    padding: 0;
+    margin: 0;
+    height: 261px;
+    overflow: hidden;
+}
+@media screen and (max-width: 375px){
+	.num2-awards-content {
+    	width: 18%;
+	}
+	.num2-awards-content:nth-child(2) {
+	    width: 8%;
+	    text-align: center;
+	    overflow:hidden;
+	}
+	.num2-awards-content:nth-child(3) {
+	    width: 27%;
+	    text-align: center;
+	    overflow:hidden;
+	}
+	.num2-awards-content1 {
+    	width: 34%;
+	}
+	.tab_menu li {
+	    width: 25%;
+	    font-size: 1em;
+	    margin-left: 22.5%;
+	}
+	.tab_menu {
+    	width: 100%;
+	}
+	.message {
+    	left: 8%;
+    	width: 84%;
+	}
+}
+@media screen and (max-width: 320px){
+	.num2-awards-content {
+    	width: 14%;
+	}
+	.num2-awards-content:nth-child(3){
+		width:24%;
+	}
+	.num2-awards-content1 {
+    	width: 30%;
+	}
+	.message {
+    	left: 3%;
+    	top: 10px;
+    	width: 94%;
+    	/*height: 350px;*/
+	}
+	#bt2 {
+    	margin-bottom: 15px;
+    	
+	}
+}
+@media screen and (max-height: 420px){
+	.message {
+    	position: absolute;
+    	top: 120px;
+	}
+}
